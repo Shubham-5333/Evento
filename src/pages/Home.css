@@ -1,0 +1,50 @@
+.event-video {
+    margin-left: 40px;
+    width: 600px;
+    border: 8px solid black;
+    border-radius: 16px;
+}
+
+/* Parent container */
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.bt-design {
+  padding: 8px 18px;
+  margin: 5px;
+  border: 1px solid #00DAF3;
+  border-radius: 5px;
+  background-color: white;
+  color: #001F24;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.bt-design:hover {  
+  background-color: #00DAF3;
+  color: white;
+}
+
+.button-container {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+/* Tablet and below */
+@media (max-width: 1080px) {
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .event-video {
+        margin-left: 0;
+        margin-top: 30px;
+        width: 100%;
+        max-width: 500px;
+    }
+}
