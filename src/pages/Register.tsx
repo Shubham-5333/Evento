@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
-import { Calendar, User, Mail, Lock, UserPlus, Trophy } from 'lucide-react';
+import { Calendar, User, Mail, Lock, UserPlus } from 'lucide-react';
 import axios from 'axios';
 
 
@@ -24,9 +24,9 @@ export const Register: React.FC = () => {
     }
     const postData = async () => {
       try {
-        const response = await axios.post('http://localhost:2000/api/register', userData,{withCredentials:true})
+        const response = await axios.post('http://localhost:2000/api/register', userData, { withCredentials: true })
         console.log(response);
-
+        navigate('/login');
       } catch (error) {
         console.log(error);
       }

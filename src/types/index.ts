@@ -87,3 +87,13 @@ export interface EventFilter {
   city: string;
   priceMax: number;
 }
+
+
+export interface Items {
+  name: string;
+  email: string;
+  role: "attendee" | "organiser";
+  phone?: string;
+  city?: string;
+  bio?: string;
+}

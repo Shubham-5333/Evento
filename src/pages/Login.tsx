@@ -3,14 +3,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { Calendar, Mail, Lock, LogIn } from 'lucide-react';
-// import Google from '../assets/google-logo-removebg-preview.png'
-import Google from '../assets/google-removebg-preview.png'
 import axios from 'axios';
 
 export const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [rememberMe, setRememberMe] = useState(true);
 
   const navigate = useNavigate();
 
@@ -21,11 +18,11 @@ export const Login: React.FC = () => {
       email,
       password,
     }
-    
-    
+
+
     const postData = async () => {
       try {
-        const response = await axios.post('http://localhost:2000/api/login', userData,{withCredentials:true})
+        const response = await axios.post('http://localhost:2000/api/login', userData, { withCredentials: true })
         console.log(response);
         navigate('/')
 
@@ -42,7 +39,7 @@ export const Login: React.FC = () => {
 
       <main className="flex-1 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8 bg-white p-8 rounded-3xl border border-slate-200 shadow-xl shadow-blue-500/5">
-          
+
           {/* Header */}
           <div className="text-center space-y-2">
             <div className="w-12 h-12 rounded-2xl bg-blue-600 flex items-center justify-center text-white mx-auto shadow-md shadow-blue-500/20">
@@ -58,7 +55,7 @@ export const Login: React.FC = () => {
 
           {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-5">
-            
+
             {/* Email Field */}
             <div className="space-y-1.5">
               <label className="text-xs font-bold text-slate-700 uppercase tracking-wider block">
@@ -122,7 +119,7 @@ export const Login: React.FC = () => {
                 <img className='w-14' src={Google}/>
               </button>
             </div> */}
-            
+
             <p className="text-xs text-slate-600 font-medium pt-2">
               Don't have an account?{' '}
               <Link to="/register" className="font-bold text-blue-600 hover:underline">

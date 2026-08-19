@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { Calendar, Search, User as UserIcon, Ticket, LogOut, CircleUserRound } from 'lucide-react';
-import { mockUser } from '../data/mockData';
+import { Calendar, Search, CircleUserRound } from 'lucide-react';
 import { BottomNav } from './BottomNav';
-import { Login } from '../pages/Login';
 import axios from 'axios';
 
 export const Header: React.FC = () => {
-  const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [userRole, setUserRole] = useState<string | null>(null);
+
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -19,6 +18,24 @@ export const Header: React.FC = () => {
       navigate(`/events?search=${encodeURIComponent(searchQuery.trim())}`);
     }
   };
+  useEffect(() => {
+    const getUser = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:2000/api/auth",
+          {
+            withCredentials: true,
+          }
+        );
+
+        setUserRole(response.data.user.role);
+      } catch (error) {
+        setUserRole(null);
+      }
+    };
+
+    getUser();
+  }, []);
 
   const handleProfileClick = async () => {
     try {
@@ -90,6 +107,14 @@ export const Header: React.FC = () => {
               >
                 My Bookings
               </Link>
+              {userRole === "organizer" && (
+                <Link
+                  to="/host-event"
+                  className="px-3.5 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors"
+                >
+                  Host an Event
+                </Link>
+              )}
             </nav>
 
             {/* User Profile Avatar / Sign In */}
@@ -102,11 +127,10 @@ export const Header: React.FC = () => {
                 > */}
                 <button
                   onClick={handleProfileClick}
-                  className="flex items-center"
+                  className="flex items-center p-1.5 rounded-xl hover:bg-slate-100 transition-colors border border-slate-200"
+                  title="Profile"
                 >
-                  <CircleUserRound
-                    className="p-1 rounded-xl hover:bg-slate-100 transition-colors border border-slate-200"
-                  />
+                  <CircleUserRound className="w-6 h-6 text-slate-700" />
                 </button>
 
                 {/* <img`

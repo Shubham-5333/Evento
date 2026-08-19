@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import axios from "axios";
 
-const ProtectedRoute = ({ children }) => {
-  const [isAuth, setIsAuth] = useState(null);
+const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
+  const [isAuth, setIsAuth] = useState<boolean | null>(null);
 
   useEffect(() => {
     axios

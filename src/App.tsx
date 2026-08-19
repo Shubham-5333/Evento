@@ -11,6 +11,7 @@ import { Profile } from './pages/Profile';
 import { MyBookings } from './pages/MyBookings';
 import { Checkout } from './pages/Checkout';
 import { BookingSuccess } from './pages/BookingSuccess';
+import { HostEvent } from './pages/HostEvent';
 import ProtectedRoute from './components/ProtectedRoute';
 import GuestRoute from './components/GuestRoute';
 
@@ -21,10 +22,11 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/events" element={<Events />} />
       <Route path="/events/:id" element={<EventDetails />} />
+      <Route path="/host-event" element={<HostEvent />} />
 
       {/* Auth Pages */}
-      <Route path="/login" element={<GuestRoute><Login/></GuestRoute>} />
-      <Route path="/register" element={<GuestRoute><Register/></GuestRoute>} />
+      <Route path="/login" element={<GuestRoute><Login /></GuestRoute>} />
+      <Route path="/register" element={<GuestRoute><Register /></GuestRoute>} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
 
       {/* Booking Journey */}
